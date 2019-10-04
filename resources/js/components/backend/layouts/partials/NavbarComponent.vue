@@ -16,7 +16,7 @@
           <b-navbar-item tag="router-link" :to="{name: 'backend.skills'}">
                 Skills
           </b-navbar-item>
-          <b-navbar-dropdown label="Info">
+          <b-navbar-dropdown label="Contact">
               <b-navbar-item href="#">
                   {{ countSkills }}
               </b-navbar-item>

@@ -18093,7 +18093,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "b-navbar-dropdown",
-            { attrs: { label: "Info" } },
+            { attrs: { label: "Contact" } },
             [
               _c("b-navbar-item", { attrs: { href: "#" } }, [
                 _vm._v(
