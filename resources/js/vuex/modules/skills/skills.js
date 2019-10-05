@@ -15,7 +15,7 @@ export default {
    actions: {
       loadSkills (context, params) {
          context.commit('LOADING', true)
-         axios.get('api/v1/skills', {params})
+         axios.get('/api/v1/skills', {params})
                   .then(response => {
                      console.log(response)
                   
@@ -31,7 +31,7 @@ export default {
       store (context, params) {
          context.commit('LOADING', true)
          return new Promise((resolve, reject) => {
-            axios.post('api/v1/skills', params)
+            axios.post('/api/v1/skills', params)
                   .then(response => resolve())
                   .catch(error => reject(error))
                   .finally(() => {
@@ -41,7 +41,7 @@ export default {
       },
       destroy (context, id) {
          return new Promise((resolve, reject) => {
-            axios.delete(`api/v1/skills/${id}`)
+            axios.delete(`/api/v1/skills/${id}`)
                   .then(response => resolve())
                   .catch(error => reject(error))
                   .finally(() => {})
@@ -49,7 +49,7 @@ export default {
       },
       destroyAll (context, ids) {
          return new Promise((resolve, reject) => {
-            axios.delete(`api/v1/skills/delete/${ids}`)
+            axios.delete(`/api/v1/skills/delete/${ids}`)
                   .then(response => resolve())
                   .catch(error => reject(error))
                   .finally(() => {})

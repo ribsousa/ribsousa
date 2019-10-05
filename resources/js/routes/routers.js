@@ -13,15 +13,15 @@ const routes = [
       path: '/backend',
       component: BackendComponent,
       children: [
-         {path: '', component: DashboardComponent, name: 'backend.dashboard'},
-         {path: 'skills', component: SkillsComponent, name: 'backend.skills'},
-         {path: 'skills/create', component: CreateSkillComponent, name: 'backend.skills.create'}
+         {path: '/', component: DashboardComponent, name: 'backend.dashboard'},
+         {path: '/skills', component: SkillsComponent, name: 'backend.skills'},
+         {path: '/skills/create', component: CreateSkillComponent, name: 'backend.skills.create'}
       ]
    },
 ]
 
 const router = new VueRouter({
-   //mode: 'history',
+   mode: 'history',
    routes
 })
 

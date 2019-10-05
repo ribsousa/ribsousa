@@ -2,7 +2,7 @@
   <main :class="paddingMain">
     <navbar-component ></navbar-component>
     <section class="main-content">
-      <router-view ></router-view>
+      <router-view></router-view>
     </section>
     <footer-component></footer-component>
     <sidebar-component @onToggleCollapse="toggleCollapse"></sidebar-component>
