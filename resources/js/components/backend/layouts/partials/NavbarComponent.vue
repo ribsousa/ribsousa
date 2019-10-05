@@ -4,7 +4,7 @@
           <b-navbar-item tag="router-link" :to="{name: 'backend.dashboard'}">
               <img
                   class="is-rounded"
-                  src="images/0.jpg"
+                  src="/images/0.jpg"
                   alt="Banckend"
               >
           </b-navbar-item>

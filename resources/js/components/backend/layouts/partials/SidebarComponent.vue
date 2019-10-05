@@ -9,7 +9,7 @@
       <span slot="header">
          <img
             class="is-rounded"
-            src="images/git.png"
+            src="/images/git.png"
             alt="Banckend"
          >
       </span>

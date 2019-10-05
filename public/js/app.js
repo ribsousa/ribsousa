@@ -18387,7 +18387,7 @@ var render = function() {
             [
               _c("img", {
                 staticClass: "is-rounded",
-                attrs: { src: "images/0.jpg", alt: "Banckend" }
+                attrs: { src: "/images/0.jpg", alt: "Banckend" }
               })
             ]
           )
@@ -18495,7 +18495,7 @@ var render = function() {
       _c("span", { attrs: { slot: "header" }, slot: "header" }, [
         _c("img", {
           staticClass: "is-rounded",
-          attrs: { src: "images/git.png", alt: "Banckend" }
+          attrs: { src: "/images/git.png", alt: "Banckend" }
         })
       ]),
       _vm._v(" "),
@@ -34991,7 +34991,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var buefy_dist_buefy_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(buefy_dist_buefy_css__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _routes_routers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./routes/routers */ "./resources/js/routes/routers.js");
 /* harmony import */ var _vuex_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vuex/store */ "./resources/js/vuex/store.js");
-//require('./bootstrap');
 
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
