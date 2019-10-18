@@ -2194,7 +2194,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$buefy.dialog.prompt({
-        message: "Editando",
         inputAttrs: {
           maxlength: 10,
           value: skill.name

@@ -136,7 +136,6 @@ export default {
       },
       edit (skill) {
          this.$buefy.dialog.prompt({
-            message: `Editando`,
             inputAttrs: {
                maxlength: 10,
                value: skill.name
