@@ -34,6 +34,7 @@
             :loading="loading" 
             :checked-rows.sync="checkedRows"
             :selected.sync="selected"
+            @dblclick="edit"
             :paginated="isPaginated"
             :per-page="perPage"
             :current-page.sync="currentPage"
@@ -85,6 +86,7 @@ export default {
    },
    data () {
       return {
+         errors: {},
          filter: '',
          isTagItems: false,
          showDelete: false,
@@ -132,8 +134,47 @@ export default {
          console.log(this.filter);
          this.$store.dispatch('loadSkills', {name: this.filter})
       },
-      create () {
-
+      edit (skill) {
+         this.$buefy.dialog.prompt({
+            message: `Editando`,
+            inputAttrs: {
+               maxlength: 10,
+               value: skill.name
+            },
+            trapFocus: true,
+            confirmText: 'Salvar',
+            cancelText: 'Cancelar',
+            onConfirm: (value) => {
+               skill.name = value
+               this.update(skill)
+            }
+         })
+      },
+      update (skill) {
+         this.$store.dispatch('update', skill)
+                        .then(() => {
+                           this.errors = {}
+                           this.$buefy.notification.open({
+                              message: 'Skill alterado com sucesso!',
+                              type: 'is-success',
+                              hasIcon: true,
+                              position: 'is-bottom',
+                              closable: true,
+                              duration: 3000
+                           })
+                        })
+                        .catch(error => {
+                           this.errors = error.response.data.errors
+                            this.$buefy.notification.open({
+                              message: this.errors.name[0],
+                              type: 'is-danger',
+                              hasIcon: true,
+                              position: 'is-bottom',
+                              closable: true,
+                              duration: 3000
+                           })
+                        })
+                        .finally()
       },
       confirmDestroy () {
          this.$buefy.dialog.confirm({

@@ -2129,6 +2129,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   created: function created() {
@@ -2144,6 +2145,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      errors: {},
       filter: '',
       isTagItems: false,
       showDelete: false,
@@ -2188,9 +2190,54 @@ __webpack_require__.r(__webpack_exports__);
         name: this.filter
       });
     },
-    create: function create() {},
-    confirmDestroy: function confirmDestroy() {
+    edit: function edit(skill) {
       var _this = this;
+
+      this.$buefy.dialog.prompt({
+        message: "Editando",
+        inputAttrs: {
+          maxlength: 10,
+          value: skill.name
+        },
+        trapFocus: true,
+        confirmText: 'Salvar',
+        cancelText: 'Cancelar',
+        onConfirm: function onConfirm(value) {
+          skill.name = value;
+
+          _this.update(skill);
+        }
+      });
+    },
+    update: function update(skill) {
+      var _this2 = this;
+
+      this.$store.dispatch('update', skill).then(function () {
+        _this2.errors = {};
+
+        _this2.$buefy.notification.open({
+          message: 'Skill alterado com sucesso!',
+          type: 'is-success',
+          hasIcon: true,
+          position: 'is-bottom',
+          closable: true,
+          duration: 3000
+        });
+      })["catch"](function (error) {
+        _this2.errors = error.response.data.errors;
+
+        _this2.$buefy.notification.open({
+          message: _this2.errors.name[0],
+          type: 'is-danger',
+          hasIcon: true,
+          position: 'is-bottom',
+          closable: true,
+          duration: 3000
+        });
+      })["finally"]();
+    },
+    confirmDestroy: function confirmDestroy() {
+      var _this3 = this;
 
       this.$buefy.dialog.confirm({
         message: "".concat(this.checkedRows.length, " registros ser\xE3o exclu\xEDdos permanentemente"),
@@ -2200,10 +2247,10 @@ __webpack_require__.r(__webpack_exports__);
         position: 'is-bottom',
         hasIcon: true,
         onConfirm: function onConfirm() {
-          return _this.handlerDestroy();
+          return _this3.handlerDestroy();
         },
         onCancel: function onCancel() {
-          return _this.clearSelected();
+          return _this3.clearSelected();
         }
       });
     },
@@ -2220,10 +2267,10 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     destroy: function destroy() {
-      var _this2 = this;
+      var _this4 = this;
 
       this.$store.dispatch('destroy', this.ids).then(function () {
-        _this2.$buefy.notification.open({
+        _this4.$buefy.notification.open({
           message: 'Skill excluído com sucesso!',
           type: 'is-success',
           hasIcon: true,
@@ -2232,13 +2279,13 @@ __webpack_require__.r(__webpack_exports__);
           duration: 3000
         });
 
-        _this2.clearSelected();
+        _this4.clearSelected();
 
-        _this2.showDelete = false;
+        _this4.showDelete = false;
 
-        _this2.loadSkills();
+        _this4.loadSkills();
       })["catch"](function (error) {
-        _this2.$buefy.notification.open({
+        _this4.$buefy.notification.open({
           message: 'Erro ao excluir!',
           type: 'is-danger',
           hasIcon: true,
@@ -2249,16 +2296,16 @@ __webpack_require__.r(__webpack_exports__);
       })["finally"](function () {});
     },
     destroyAll: function destroyAll() {
-      var _this3 = this;
+      var _this5 = this;
 
       this.ids = this.checkedRows.map(function (skill) {
         return skill.id;
       });
       this.selectedItems = this.ids.length;
       this.$store.dispatch('destroyAll', this.ids).then(function () {
-        var mesage = _this3.selectedItems > 1 ? 'skills excluídos!' : 'skill excluído!';
+        var mesage = _this5.selectedItems > 1 ? 'skills excluídos!' : 'skill excluído!';
 
-        _this3.$buefy.notification.open({
+        _this5.$buefy.notification.open({
           message: mesage,
           type: 'is-success',
           hasIcon: true,
@@ -2267,11 +2314,11 @@ __webpack_require__.r(__webpack_exports__);
           duration: 3000
         });
 
-        _this3.clearSelected();
+        _this5.clearSelected();
 
-        _this3.showDelete = false;
+        _this5.showDelete = false;
 
-        _this3.loadSkills();
+        _this5.loadSkills();
       })["catch"](function (error) {
         console.log(error);
       })["finally"](function () {});
@@ -18826,6 +18873,7 @@ var render = function() {
               "update:selected": function($event) {
                 _vm.selected = $event
               },
+              dblclick: _vm.edit,
               "update:currentPage": function($event) {
                 _vm.currentPage = $event
               },
@@ -35750,6 +35798,18 @@ __webpack_require__.r(__webpack_exports__);
       context.commit('LOADING', true);
       return new Promise(function (resolve, reject) {
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/v1/skills', params).then(function (response) {
+          return resolve();
+        })["catch"](function (error) {
+          return reject(error);
+        })["finally"](function () {
+          context.commit('LOADING', false);
+        });
+      });
+    },
+    update: function update(context, params) {
+      context.commit('LOADING', true);
+      return new Promise(function (resolve, reject) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("/api/v1/skills/".concat(params.id), params).then(function (response) {
           return resolve();
         })["catch"](function (error) {
           return reject(error);

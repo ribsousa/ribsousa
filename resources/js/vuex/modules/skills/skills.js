@@ -39,6 +39,17 @@ export default {
                   })
          })
       },
+      update (context, params) {
+         context.commit('LOADING', true)
+         return new Promise((resolve, reject) => {
+            axios.put(`/api/v1/skills/${params.id}`, params)
+                  .then(response => resolve())
+                  .catch(error => reject(error))
+                  .finally(() => {
+                     context.commit('LOADING', false)
+                  })
+         })
+      },
       destroy (context, id) {
          return new Promise((resolve, reject) => {
             axios.delete(`/api/v1/skills/${id}`)
