@@ -146,6 +146,7 @@ export default {
             onConfirm: (value) => {
                skill.name = value
                this.update(skill)
+               this.clearSelected()
             }
          })
       },

@@ -2205,6 +2205,8 @@ __webpack_require__.r(__webpack_exports__);
           skill.name = value;
 
           _this.update(skill);
+
+          _this.clearSelected();
         }
       });
     },
