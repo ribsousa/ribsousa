@@ -9,7 +9,7 @@
                <option value="20">20</option>
             </b-select>
             <div class="control">
-               <b-button class="button field" type="is-success" tag="router-link" to="skills/create" icon-left="plus">
+               <b-button class="button field" type="is-success" tag="router-link" :to="{name: 'backend.skills.create'}" icon-left="plus">
                   Novo
                </b-button>
             </div>

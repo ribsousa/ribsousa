@@ -18747,7 +18747,7 @@ var render = function() {
                     attrs: {
                       type: "is-success",
                       tag: "router-link",
-                      to: "skills/create",
+                      to: { name: "backend.skills.create" },
                       "icon-left": "plus"
                     }
                   },
