@@ -36217,11 +36217,11 @@ var routes = [{
     component: _components_backend_pages_dashboard_DashboardComponent__WEBPACK_IMPORTED_MODULE_4__["default"],
     name: 'backend.dashboard'
   }, {
-    path: '/skills',
+    path: 'skills',
     component: _components_backend_pages_skills_SkillsComponent__WEBPACK_IMPORTED_MODULE_3__["default"],
     name: 'backend.skills'
   }, {
-    path: '/skills/create',
+    path: 'skills/create',
     component: _components_backend_pages_skills_CreateSkillComponent__WEBPACK_IMPORTED_MODULE_5__["default"],
     name: 'backend.skills.create'
   }]
