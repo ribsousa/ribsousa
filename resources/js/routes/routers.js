@@ -14,8 +14,8 @@ const routes = [
       component: BackendComponent,
       children: [
          {path: '/', component: DashboardComponent, name: 'backend.dashboard'},
-         {path: '/skills', component: SkillsComponent, name: 'backend.skills'},
-         {path: '/skills/create', component: CreateSkillComponent, name: 'backend.skills.create'}
+         {path: 'skills', component: SkillsComponent, name: 'backend.skills'},
+         {path: 'skills/create', component: CreateSkillComponent, name: 'backend.skills.create'}
       ]
    },
 ]
