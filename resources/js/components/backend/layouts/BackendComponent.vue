@@ -2,7 +2,9 @@
   <main :class="paddingMain">
     <navbar-component ></navbar-component>
     <section class="main-content">
-      <router-view></router-view>
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </section>
     <footer-component></footer-component>
     <sidebar-component @onToggleCollapse="toggleCollapse"></sidebar-component>
@@ -42,7 +44,7 @@
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
   .main-content {
     padding: 2rem;
   }
@@ -51,5 +53,15 @@
   }
   .main-padding-colapse {
     padding-left: 20rem;
+  }
+  .fade-enter-active,
+  .fade-leave-active {
+    transition-duration: 0.2s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+  }
+  .fade-enter,
+  .fade-leave-active {
+    opacity: 0
   }
 </style>

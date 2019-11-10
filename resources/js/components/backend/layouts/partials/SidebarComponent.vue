@@ -57,13 +57,16 @@
                      ],
                       badge: {
                         text: 'new',
-                        class: 'vsm--badge_default'
-                        //attributes: {value: 'teste'}
+                        class: 'vsm--badge_default',
+                        attributes: {value: 'teste'}
                         // element: 'span'
                      }
                   }
                ]
          }
+      },
+      created () {
+         this.setMenuBadgeText()
       },
       computed: {
          countSkills () {
@@ -74,6 +77,12 @@
          onToggleCollapse (collapsed) {
            this.$emit('onToggleCollapse', collapsed)
            this.toggleIcon = collapsed ? 'gesture-swipe-right' : 'gesture-swipe-left'
+         },
+         setMenuBadgeText () {
+            this.menu.forEach(link => {
+               if (link.title == 'Skills')
+                   link.badge.text = this.countSkills
+            })
          }
       },
       components: {

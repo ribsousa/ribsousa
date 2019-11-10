@@ -2,12 +2,14 @@
    <section class="is-medium">
       <div class="container">
          <b-field grouped group-multiline>
-            <b-select v-model="perPage" :disabled="!isPaginated" icon="format-list-numbers">
-               <option value="5">5</option>
-               <option value="10">10</option>
-               <option value="15">15</option>
-               <option value="20">20</option>
-            </b-select>
+            <div class="control">
+               <b-select v-model="perPage" :disabled="!isPaginated" icon="format-list-numbers">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+               </b-select>
+            </div>
             <div class="control">
                <b-button class="button field" type="is-success" tag="router-link" :to="{name: 'backend.skills.create'}" icon-left="plus">
                   Novo

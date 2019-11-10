@@ -30,6 +30,7 @@
     "dependencies": {
         "buefy": "^0.8.6",
         "bulma": "^0.7.5",
-        "vue-sidebar-menu": "^4.4.0"
+        "vue-sidebar-menu": "^4.4.0",
+        "vue-typer": "^1.2.0"
     }
 }
